@@ -1,0 +1,208 @@
+<div class="col-lg-9">
+   <div class="box-item2">
+      <!-- <div id="noi_dung_de" style='display:none;'>
+         teacher:;[giáo viên;quản ngục;nhà triết học, triết gia;chuyên viên thống kê.|
+         bike:;chủ/người làm ở trại chăn nuôi;giá biểu;tàn tích;[xe đạp
+         </div> -->
+      <form action="/lesson/submit" data-remote="true" id="quiz_form" method="post">
+         <!--    <% i = 1%>
+            <% @answer.each do |answer| %>
+            <%=answer%>
+            <% end %>-->
+         <% i= 1%>
+         <% @words.each do |vocabulary| %>
+         <div class="questions" id="question_<%=i%>">
+            <h2 id="question_<%=i%>">
+               <%=vocabulary.word%>
+            </h2>
+            <div class="align">
+               <div class="answer">
+                  <input id="radio1_<%= vocabulary.id%>" name="answer<%=i%>" type="radio" value="1">
+                  <label for="1" id="ans1_<%=vocabulary.id%>">
+                  <%=vocabulary.mean1%>
+                  </label>
+                  </input>
+               </div>
+               <div class="answer">
+                  <input id="radio2_<%=vocabulary.id%>" name="answer<%=i%>" type="radio" value="2">
+                  <label for="1" id="ans2_<%=vocabulary.id%>">
+                  <%=vocabulary.mean2%>
+                  </label>
+                  </input>
+               </div>
+               <div class="answer">
+                  <input id="radio3_<%=vocabulary.id%>" name="answer<%=i%>" type="radio" value="3">
+                  <label for="1" id="ans3_<%=vocabulary.id%>">
+                  <%=vocabulary.mean3%>
+                  </label>
+                  </input>
+               </div>
+               <div class="answer">
+                  <input id="radio4_<%=vocabulary.id%>" name="answer<%=i%>" type="radio" value="4">
+                  <label for="1" id="ans4_<%=vocabulary.id%>">
+                  <%=vocabulary.mean4%>
+                  </label>
+                  </input>
+               </div>
+               <!-- <input type="radio" checked='checked' value="5" style='display:none' id='radio4_<%=vocabulary.id%>' name='<%=vocabulary.id%>'> -->
+            </div>
+            <br/>
+            <input class="butt next-quiz" id="next<%=i%>" name="question" type="button" value="Next!"/>
+
+            <input class="butt next-quiz" id="back<%=i%>" name="question" type="button" value="Back!"/>
+         </div>
+            <% i = i+1%>
+         <% end%>
+         <div id="answer-error"></div>
+         <button class="submit-body" type="submit">Send</button>
+         <div id="answer-error"></div>
+      </form>
+      <div id="result" style="font-size: 30px">
+      </div>
+   </div>
+</div>
+<script src="/assets/jquery-3.2.1.min.js" type="text/javascript"></script>
+<script>
+   $(document).ready(function(){
+                   // alert("asb");
+                   var steps = $('form').find(".questions");   //lay object cau hoi
+                   var count = steps.length;   
+                   console.log("absdsd");              //so cau hoi
+                   steps.each(function(i){                     //moi cau hoi//1,2,3,4,. //cach cau hoi 1 dau tien //co id=0
+
+                     $(".submit-body").hide(); 
+             
+                       console.log(i);
+                       hider=i+2;                              // 2
+                       if (i == 0) {                           // neu ban dau
+                           $("#question_" + hider).hide();     // aanr cau tiep theo
+                           createNextButton(i);                //tao nut
+                           createNextButtonBack(i);
+                       }
+                       else if(count==i+1){                    //neu ma cau hoi cuoi cung thi step = so cau (1->..)
+                           var step=i + 1;
+                           createNextButtonBack(i);
+                           //$("#next"+step).attr('type','submit');
+                           $("#next"+step).on('click',function(){      //thi submit cai next
+                               submit();
+                               //sua
+                                $("#next" + step).hide();
+                                $("#back" + step).hide();
+                                $(".submit-body").show(); 
+                                //end sua
+                           });
+
+                        // 
+
+                       }
+                       else{
+                           $("#question_" + hider).hide();
+                           createNextButton(i);
+                           createNextButtonBack(i);
+                       }
+
+                       
+                   });
+   
+   
+                   var error = {
+                       'answer' : function(str){
+                           $('#answer-error')[0].innerHTML = str;
+                       }
+                   }
+   
+                   function submit(){
+                  //   var selectedQuiz = $('#quiz_form').eq(0).find('.questions');
+                  //       console.log("abc");
+                  //       var answer = [];
+                  //       console.log(selectedQuiz.length);
+                  //       for(var cnt = 1; cnt <= selectedQuiz.length; cnt++){
+                  //           var selectedAnwser = selectedQuiz.eq(cnt).find('input[name=answer' + cnt + ']:checked');
+   
+                  //           if(selectedAnwser.length > 0){
+                           //  answer[selectedQuiz.eq(cnt).attr('title')] = parseInt(selectedAnwser.eq(1).val());
+                           // }
+                           // else {
+                           //  answer[selectedQuiz.eq(cnt).attr('title')] = -1;
+                           //  error.answer("You must select one answer first");
+                           // }
+                           // console.log(answer);
+                           // console.log(answer);
+   
+                  //       }
+
+
+                  
+                  
+              }
+                function createNextButton(i){
+                   var step = i + 1;
+                   var step1 = i + 2;
+                   var step2 = i;
+                   $('#next'+step).on('click',function(){
+                       $("#question_" + (step)).hide();
+                       $("#question_" + (step1)).show();
+                   });
+                }
+
+
+                function createNextButtonBack(i){
+                   var step = i + 1;
+                   var step1 = i + 2;
+                   var step2 = i;
+                   console.log("i"+i);
+                   if(i!=0){
+                        $('#back'+step).on('click',function(){
+                          $("#question_" + step).hide();
+                           $("#question_" + step2).show();
+                       });
+                   }
+                   else{
+                        $("#back" + (step)).hide();
+                   }
+                   
+                }
+           setTimeout(function() {
+               submit();
+           }, 50000);
+       });
+</script>
+<!--<script type="text/javascript">
+   var error = {
+       'answer' : function(str){
+           $('#answer-error').eq(0).innerHTML(str);
+       }
+   }
+   function submit(){
+       var selectedForm = $('form[name=quiz]').eq(0);
+       var selectedGroup = selectedForm.find('input[name=answer]:checked');
+           console.log('dub');
+       if(selectedGroup.length == 1){
+           var answer = {
+               'quiz-id' : selectedForm.attr('title'),
+               'answer' : selectedGroup.eq(0).val()
+           };
+           console.log(answer);
+           $.get("http://192.168.100.136:3000", answer, function(){
+               // accepts: {
+               // mycustomtype: 'application/x-some-custom-type'
+               // }
+               // ,
+   
+               // // Instructions for how to deserialize a `mycustomtype`
+               // converters: {
+               // 'text mycustomtype': function(result) {
+               // // Do Stuff
+               // return newresult;
+               // }
+               // },
+   
+               // // Expect a `mycustomtype` back from server
+               // dataType: 'mycustomtype'
+           });
+       } else {
+           error.answer("You must select one answer first");
+       }
+   }
+   </script>-->
+<div class="clr"></div>

@@ -1,0 +1,20 @@
+<li class="search-item">
+  <%= link_to user do %>
+    <div class="col-md-3">
+     <%= gravatar_for user, size: 60 %>
+    <div class="col-md-8">
+      <div class="row">
+        <strong><%= user.name %></strong>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <%= user.email %>
+        </div>
+      </div>
+      <div class="row">
+        <i><%= User.name %></i>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  <% end %>
+</li>

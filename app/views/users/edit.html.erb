@@ -1,0 +1,104 @@
+<!-- edit user -->
+<% provide(:title, "Edit user") %>
+<h1>Update your profile</h1>
+
+<!-- <div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email, class: 'form-control' %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password, class: 'form-control' %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+
+    <div class="gravatar_edit">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">change</a>
+    </div>
+  </div>
+</div> -->
+
+<!-- --- -->
+
+    
+
+      <!-- Page Content -->
+    <div class="row">
+      <div style="">
+
+       <!--  <div class="avatar">
+            <img style="width: 100px; text-align:  center;" src="/assets/teoteoteo.jpg" class="img-circle" alt="Cinque Terre" />
+            <div id="user-name">
+              <h4><b>Thu Hien</b></h4>
+            </div>
+        </div> -->
+         <div class="gravatar_edit">
+          <%= gravatar_for @user %>
+          <a href="http://gravatar.com/emails" target="_blank">change</a>
+        </div>
+
+        <div class="form-style-5 w3-margin" >
+          <%= form_for(@user) do |f| %>
+            <%= render 'shared/error_messages', object: f.object %>
+          <!-- <form class="form-infor"> -->
+            <fieldset>
+              <legend><span class="number">1</span>Thông tin của bạn:</legend>
+              <!-- <input type="text" name="field1" placeholder="Họ và tên *"> -->
+              <%= f.text_field :name, placeholder: "Username *", class: 'form-control' %>
+              <!-- <input type="email" name="field2" placeholder="Email *"> -->
+              <%= f.email_field :email, placeholder:"Email *", class: 'form-control' %>
+             
+           
+              <!-- <label for="job">Giới tính:</label>
+              <select id="job" name="field4">
+              <optgroup label="Giới tính">
+                <option value="reading">Nam</option>
+                <option value="boxing">Nữ</option>
+              </optgroup> -->
+              <!-- <optgroup label="Indoors">
+                <option value="fishkeeping">Fishkeeping</option>
+                <option value="reading">Reading</option>
+                <option value="boxing">Boxing</option>
+                <option value="debate">Debate</option>
+                <option value="gaming">Gaming</option>
+                <option value="snooker">Snooker</option>
+                <option value="other_indoor">Other</option>
+              </optgroup>
+              <optgroup label="Outdoors">
+                <option value="football">Football</option>
+                <option value="swimming">Swimming</option>
+                <option value="fishing">Fishing</option>
+                <option value="climbing">Climbing</option>
+                <option value="cycling">Cycling</option>
+                <option value="other_outdoor">Other</option>
+              </optgroup> 
+              </select>    -->  
+            </fieldset>
+            <fieldset>
+              <legend><span class="number">2</span>Mật khẩu</legend>
+              <!-- <textarea name="field3" placeholder="About Your School"></textarea> -->
+              <%= f.password_field :password, placeholder:"Password *", class: 'form-control' %>
+              <%= f.password_field :password_confirmation,placeholder:"Password Confirmation*", class: 'form-control' %>
+
+            </fieldset>
+            <!-- <input type="submit" value="Cập nhập" /> -->
+            <%= f.submit "Save changes", class: "btn btn-primary" %>
+          <!-- </form> -->
+          <% end %>
+  </div>
+  </div>
+</div>
+
+  
+

@@ -1,0 +1,24 @@
+<% provide(:title, 'Create Word') %>
+    <h1 class="title-new">Create new Word</h1>
+
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<%= form_for(@word, url: words_create_path) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :Question %>
+	 <%= f.text_field :word, class: "form-control" %>
+	 <%= f.label :Answer%>
+	 <%= f.text_field :mean1, class: "form-control" %>
+	 <%= f.label :Answer%>
+	 <%= f.text_field :mean2, class: "form-control" %>
+	 <%= f.label :Answer%>
+	 <%= f.text_field :mean3, class: "form-control" %>
+	 <%= f.label :Answer%>
+	 <%= f.text_field :mean4, class: "form-control" %>
+	 <%= f.label :True %>
+	 <%= f.text_field :mean, class: "form-control" %>
+   	 	<%= f.submit "Create Answer", class: "btn btn-primary" %>
+   	 
+   	 	<% end %>
+   	 </div>
+   	</div>

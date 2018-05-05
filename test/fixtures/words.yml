@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  word: MyString
+  mean1: MyString
+  mean2: MyString
+  mean3: MyString
+  mean4: MyString
+  mean: MyString
+  status: 
+  lesson: one
+
+two:
+  word: MyString
+  mean1: MyString
+  mean2: MyString
+  mean3: MyString
+  mean4: MyString
+  mean: MyString
+  status: 
+  lesson: two

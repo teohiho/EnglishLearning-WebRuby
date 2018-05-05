@@ -1,0 +1,13 @@
+	<div class="voca">
+		<ul>
+			<!-- Một từ -->
+			<% @wordlists.each do |word| %>
+			<li>
+				<a href="#" class="list-group-item"><%= word.content %>
+				<span class="mean-word"><%=word.mean%></span>
+				</a>
+			</li>
+			<% end %>
+		</ul>
+
+	</div>

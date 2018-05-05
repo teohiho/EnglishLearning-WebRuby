@@ -1,0 +1,61 @@
+<% provide(:title, "Log in") %>
+<div class="demo-1">
+	<div class="content">
+		<div id="large-header" class="large-header">
+			<h1 style="color: #fff;">VOCA ENGLISH</h1>
+			<div class="main-agileits">
+				<!--form-stars-here-->
+				<div class="form-w3-agile">
+					<h2>Login</h2>
+
+					<% flash.each do |message_type, message| %>
+					<div class="alert alert-<%= message_type %>"><%= message %></div>
+					<% end %>
+					
+					<%= form_for(:session, url: login_path) do |f| %>
+					<div class="form-sub-w3">
+						<%= f.text_field :email, placeholder: "Enter your email" %>
+						<div class="icon-w3">
+							<i class="fa fa-user" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div class="form-sub-w3">
+						<%= f.password_field :password, placeholder: "Enter your password" %>
+						<div class="icon-w3">
+							<i class="fa fa-unlock-alt" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div class="remember_me">
+						<%= f.label :remember_me, class: "remember_me checkbox inline" do %>
+						<%= f.check_box :remember_me %>
+						<span>Remember me on this computer</span>
+						<% end %>
+					</div>
+					<div class="submit-w3l">
+						<%= f.submit "Log in", class: "btn btn-primary" %>
+					</div>
+					<% end %>
+
+					<div class="text-center">
+						<p class=" text-center p-bottom-w3ls1">New User?<%= link_to "Register here", signup_path %></p>
+					</div>
+					<div class="clear"></div>
+					<div class="social w3layouts">
+						<div class="heading">
+							<div class="clear"></div>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				<!--//form-ends-here-->
+			</div><!-- copyright -->
+			<div class="copyright w3-agile">
+				<p> © 2018 Tiếng anh cho mọi ngưòi VOCA ENGLISH | Design by <a href="http://vocaenglish.com/" target="_blank">Team3</a></p>
+			</div>
+			<!-- //copyright --> 
+			    <%= render 'layouts/footer' %>
+		</div>
+	</div>
+</div>	

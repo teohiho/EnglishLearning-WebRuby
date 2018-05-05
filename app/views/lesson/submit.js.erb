@@ -1,0 +1,35 @@
+$.ajax({
+    // type: "POST",
+    // url: "/quizs/show",
+    // data: $('form').serialize(),
+    success: function(msg) {
+       $("#quiz_form").addClass("hide");
+		
+		$('#result').append("<div class='result'>" +
+						    "<div style='font-size: 30px' id='result'></div>" +
+						    "<div class='bo'>" +
+						   	"<h3>Bạn vừa mới ôn: <a href='quiz.html'>Từ vựng sơ cấp 120 từ</a></h3>" +
+						   	"</div>" +
+						   	"<div class='caudung'>" +
+						    "<h3><span><%= @message%>/15 </span>câu đúng</h3>" +
+						    "</div>" +
+						    "<div class='thanhphantram'>" +
+						    "<p>Đến lúc này, bạn đã nhớ 60% số từ trong nhóm từ này</p>" +
+						    "<div class='w3-light-grey w3-round'>" +
+						   	"<div class='w3-container w3-round w3-blue' style='width:60%'>60%</div>" +
+						   	"</div>" +
+						    "</div>" +
+						    "</div>");
+		$('#result').show(); 	 	
+		console.log("<%= @message %>");
+		
+		console.log("words"+"<%= @words %>");
+		console.log("mean"+"<%= @means %>");
+		console.log("correct_id"+"<%= @correct_id %>");
+		console.log("correct_words"+"<%= @correct_words %>");
+		console.log("correct_means"+"<%= @correct_means %>");
+		console.log("answer"+"<%= @answer %>");
+		
+
+    }
+ });

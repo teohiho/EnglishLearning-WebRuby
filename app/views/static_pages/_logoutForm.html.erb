@@ -1,0 +1,128 @@
+<div class="clr"></div>
+
+
+<div class="container">
+	<div class="row">
+		<!--Left bar-->
+		<div class="col-lg-3">
+
+			<div class="user-infor" style="text-align: center;">
+				<!-- <img src="/assets/teoteoteo.jpg" style="width: 120px;" class="img-circle" alt="Cinque Terre">
+				 --><div class="img-circle" style="width: 120px;">
+				 	
+
+				 <%= gravatar_for @current_user, class:"img" %>
+				  </div >
+				<div id="user-name">
+
+					<b><h4><%= link_to "#{@current_user.name}", users_path %></h4></b>
+
+					
+					<section class="stats">
+						<%= render 'shared/stats' %>
+					</section>
+
+					<div class="accept">
+						<h4><a <%= link_to "Wordlist", wordlists_show_path(current_user.id), class:"btn btn-info" %> </a> <h4>
+						</div>
+
+						<% if current_user.admin?%>
+						<div class="accept">
+							<h4><a <%= link_to "Create lessons", "lesson/new" , class:"btn btn-info" %> </a> <h4>
+							</div>
+							<% end %>
+
+
+						</div>
+					</div>
+
+
+
+					<div class="xephang">
+						<h3>Xếp hạng điểm</h3>
+						<ul>
+							<li><a href="#" class="list-group-item">thuhien191197 <span class="badge">150 điểm</span></a></li>
+							<li><a href="#" class="list-group-item">teohiho <span class="badge">230 điểm</span></a></li>
+							<li><a href="#" class="list-group-item">nguyenvietnam97 <span class="badge">127 điểm</span></a></li>
+							<li><a href="#" class="list-group-item">duongdethuongdn <span class="badge">267 điểm</span></a></li>
+							<li><a href="#" class="list-group-item">hoainam_dn <span class="badge">165 điểm</span></a></li>
+						</ul>
+					</div>
+					<div class="advertisement">
+						<a href="http://tienganhtreem.net.vn/tin-tuc/uu-dai-khoa-hoc-be-tu-tin-giao-tiep-tieng-anh.html"><img src="/assets/anh7.jpg" alt="quangcao" /></a>
+
+						<a href="http://tienganhtreem.net.vn/tin-tuc/uu-dai-khoa-hoc-be-tu-tin-giao-tiep-tieng-anh.html"><img src="/assets/anh8.jpg" alt="quangcao" /></a>
+
+						<!--Footer-->
+						<div class="footer">							
+							<div class="logo-footer">
+								<h3><a href="" title="">Framgia E-Learning</a></h3>
+							</div>
+							<p class="text-muted">--- Make it awesome ---</p>   
+							<div class="follow-us">
+								<p class="text-muted">
+									Follow us :
+								</p>								
+								<a href="#" class="fa fa-facebook"></a>
+								<a href="#" class="fa fa-youtube"></a>		
+							</div>							  
+							<a class="text-muted" href="hoctienganh.com" style="text-decoration: none;">
+								<div class="copyright">
+									<p>
+										&copy; 2018 Voca Enghlish <br /> Web Design: Hien Ho.
+									</p>
+								</div>
+							</a>  
+						</div>
+
+					</div>
+
+				</div>
+
+
+
+
+
+
+
+				<!--Right bar-->
+				<div class="col-lg-9">
+
+					<% @lessons.each do |l| %>
+					<div class="col-lg-6">
+						<div class="box-item">
+							<div class="item-title">
+								<h4><a href="" title=""><%=l.name%></a></h4>
+								<div class="title">
+									Bộ từ vựng các từ cơ bản trong tiếng Anh
+								</div>
+
+
+
+								<% if current_user.admin?%>
+								<%= link_to "delete", lesson_path(l.id), method: "delete", data: { confirm: "You sure?" } %>
+								<% end %>
+
+								<div class="thumb">
+									<img src="/assets/anh1.jpg"  alt="Cinque Terre">
+								</div>
+							</div>
+
+							<div class="accept">
+								<h4><a <%= link_to "Tham gia", lesson_path(l.id), class:"btn btn-info" %> </a> <h4>
+								</div>
+
+							</div>
+						</div>
+						<% end %>
+
+
+					</div>
+				</div>
+			</div>
+
+
+			<div class="clr"></div>
+
+
+
